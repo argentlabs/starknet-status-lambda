@@ -14,7 +14,7 @@ GET https://starknet-status.vercel.app/api/status
 
 ## Development
 
-If you want to develop this lambda locally, you can use commands:
+If you want to develop this lambda locally, you can use:
 ```
 npx vercel dev
 ```
