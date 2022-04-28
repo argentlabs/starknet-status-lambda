@@ -1,0 +1,15 @@
+{
+  "name": "starknet-status",
+  "version": "0.1.0",
+  "description": "Cache layer for checkly endpoint",
+  "author": "Janek Rahrt",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@vercel/node": "^1.14.1"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "node-fetch": "^3.2.4"
+  }
+}
