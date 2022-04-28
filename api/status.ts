@@ -45,26 +45,27 @@ const handler: VercelApiHandler = async (_request, response) => {
 
 // solution from https://vercel.com/support/articles/how-to-enable-cors
 function allowCors(fn: Function) {
-  return async (req, res) => {
+  return async (_request, response) => {
     const whitelist = ["localhost:3000", "playoasis.xyz"];
 
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    whitelist.forEach((url: string) => {
-      res.setHeader("Access-Control-Allow-Origin", url);
-    });
-    res.setHeader(
+    const origin = _request.headers.origin;
+    if (whitelist.includes(origin)) {
+      response.setHeader("Access-Control-Allow-Origin", origin);
+    }
+    response.setHeader("Access-Control-Allow-Credentials", true);
+    response.setHeader(
       "Access-Control-Allow-Methods",
       "GET,OPTIONS,PATCH,DELETE,POST,PUT"
     );
-    res.setHeader(
+    response.setHeader(
       "Access-Control-Allow-Headers",
       "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
     );
-    if (req.method === "OPTIONS") {
-      res.status(200).end();
+    if (_request.method === "OPTIONS") {
+      response.status(200).end();
       return;
     }
-    return await fn(req, res);
+    return await fn(_request, response);
   };
 }
 
