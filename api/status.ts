@@ -1,5 +1,6 @@
 import type { VercelApiHandler } from "@vercel/node";
 import axios, { AxiosRequestHeaders } from "axios";
+import { allowCors } from "../lib/cors";
 
 const { HEADERS, ENDPOINT } = process.env;
 
@@ -43,4 +44,4 @@ const handler: VercelApiHandler = async (_request, response) => {
   }
 };
 
-export default handler;
+export default allowCors(handler);
