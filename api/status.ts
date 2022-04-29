@@ -1,5 +1,6 @@
 import type { VercelApiHandler } from "@vercel/node";
 import axios, { AxiosRequestHeaders } from "axios";
+import { allowCors } from "../lib/cors";
 
 const { HEADERS, ENDPOINT } = process.env;
 
@@ -42,31 +43,5 @@ const handler: VercelApiHandler = async (_request, response) => {
     return response.status(500).send("Error fetching endpoint");
   }
 };
-
-// solution from https://vercel.com/support/articles/how-to-enable-cors
-function allowCors(fn: Function) {
-  return async (_request, response) => {
-    const whitelist = ["localhost:3000", "playoasis.xyz"];
-
-    const origin = _request.headers.origin;
-    if (whitelist.includes(origin)) {
-      response.setHeader("Access-Control-Allow-Origin", origin);
-    }
-    response.setHeader("Access-Control-Allow-Credentials", true);
-    response.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-    );
-    response.setHeader(
-      "Access-Control-Allow-Headers",
-      "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-    );
-    if (_request.method === "OPTIONS") {
-      response.status(200).end();
-      return;
-    }
-    return await fn(_request, response);
-  };
-}
 
 export default allowCors(handler);
