@@ -24,7 +24,7 @@ For further informations about this command, see [vercel docs](https://vercel.co
 
 ## Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fargentlabs%2Fstarknet-status-lambda&env=ENDPOINT,HEADERS&envDescription=API%20endpoint%2C%20for%20example%3A%20https%3A%2F%2Fapi.checklyhq.com%2Fv1%2Fcheck-statuses%20%7C%20HEADERS%3A%20%7B%22Authorization%22%3A%20%22Bearer%20API_KEY_HERE%22%2C%20%22X-Checkly-Account%22%3A%20%22ACCOUNT_ID_HERE%22%7D)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fargentlabs%2Fstarknet-status-lambda&env=ENDPOINT,HEADERS&envDescription=ENDPOINT%20EXAMPLE%3A%20https%3A%2F%2Fapi.checklyhq.com%2Fv1%2Fcheck-statuses%20HEADER%20EXAMPLE%3A%20%7B%22Authorization%22%3A%20%22Bearer%20API_KEY_HERE%22%2C%20%22X-Checkly-Account%22%3A%20%22ACCOUNT_ID_HERE%22%7D)
 
 Vercel will ask you to input the required environment variables `ENDPOINT` and `HEADERS`
 
